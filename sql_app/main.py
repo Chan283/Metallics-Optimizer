@@ -67,14 +67,14 @@ def create_commodity(commodity: schemas.CommodityCreate, db: Session = Depends(g
 @app.get("/commodities/{commodity_id}", response_model=schemas.Commodity)
 def get_commodity_by_id(commodity_id: int, db: Session = Depends(get_db), username: str = Depends(get_current_username)):
     db_commodity = crud.get_commodity(db, commodity_id=commodity_id)
+    if db_commodity is None:
+        raise HTTPException(status_code=404, detail="Commodity not found")
     """
     chem_compo_sum= sum([i.percentage for i in db_commodity.chemicals])
     if chem_compo_sum<100:
         per_to_add=100-chem_compo_sum
         crud.create_chemicals_for_commodity(commodity_id=commodity_id, chemical=schemas.ChemicalCreate("name":"unknown","percentage":per_to_add),db=db)
     """
-    if db_commodity is None:
-        raise HTTPException(status_code=404, detail="Commodity not found")
     return db_commodity
 
 
