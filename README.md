@@ -18,4 +18,4 @@ Installation:
 
 API can be executed by: uvicorn sql_app.main:app --reload
 
-Swagger Docs for API can be viewed at : http://127.0.0.1:8000/docs#/
+Swagger Docs for API can be viewed at when API is hosted using above command : http://127.0.0.1:8000/docs#/
