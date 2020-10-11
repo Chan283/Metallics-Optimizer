@@ -3,9 +3,9 @@
 Technologies Used:
 - Python
 - FastAPI
-- Implements following features:
 
-User Authorisation
+Implements following features:
+- User Authorisation
 - Get all chemicals
 - Get commodity by ID
 - Update Commodity by ID
